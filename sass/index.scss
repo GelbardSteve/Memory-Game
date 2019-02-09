@@ -1,0 +1,51 @@
+* { 
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #4267b2;
+}
+
+.img-container {
+    width: 640px;
+    height: 640px;
+    display: flex;
+    flex-wrap: wrap;
+    margin: auto;
+    perspective: 1000px;
+    transition: .5s
+}
+
+.img-section {
+    width: calc(27% - 23px);
+    position: relative;
+    transform: scale(1);
+    margin: 5px;
+    transition: .5s;
+    transform-style: preserve-3d;
+}
+
+.img-section.flip {
+    transform: rotateX(180deg);
+}
+
+.img-section:active {
+    transform: scale(.97);
+    transition: .5s;
+}
+
+.front-face,
+.back-face {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    border: 1px solid black;
+    backface-visibility: hidden;
+    border-radius: 5%;
+}
+
+.front-face {
+    transform: rotateX(180deg);
+}
