@@ -75,6 +75,7 @@ body {
   border: 15px solid red;
   border-radius: 25px;
 }
+
 .text {
   margin-top: 25px;
   text-align: center;
@@ -82,10 +83,14 @@ body {
 
 .playAgain {
   padding: 20px 30px;
-    border: none;
-    display: block;
-    margin: 100px auto;
-    border-radius: 14px;
-    cursor: pointer;
+  border: none;
+  display: block;
+  margin: 100px auto;
+  border-radius: 14px;
+  cursor: pointer;
+  border: 1px solid black;
+}
+.playAgain:hover {
+  background-color: cadetblue;
 }
 /*# sourceMappingURL=index.css.map */
