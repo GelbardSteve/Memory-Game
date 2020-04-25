@@ -42,7 +42,6 @@ function checkthematch() {
 }
 
 function userWin() {
-  console.log(arr.length);
   if (arr.length == 6) {
     win.style.display = "block";
   }
