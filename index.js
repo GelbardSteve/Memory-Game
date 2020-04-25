@@ -1,45 +1,62 @@
-const imgSection = document.querySelectorAll('.img-section');
+const imgSection = document.querySelectorAll(".img-section");
+const win = document.querySelector(".win");
+const playAgain = document.querySelector(".playAgain");
 
 let flipped = false;
 let locked = false;
 let firstCard, secondCard;
 
-function flipCard() { 
-    if (locked)return;
-    if(this === firstCard) return;
+let arr = [];
 
-    this.classList.add('flip'); 
+function flipCard() {
+  if (locked) return;
+  if (this === firstCard) return;
 
-    if(!flipped){
-        flipped = true;
-        firstCard = this;
-    } else {
-        flipped = false;
-        secondCard = this;
+  this.classList.add("flip");
 
-        checkthematch();
-    }
+  if (!flipped) {
+    flipped = true;
+    firstCard = this;
+  } else {
+    flipped = false;
+    secondCard = this;
+
+    checkthematch();
+  }
 }
 
 function checkthematch() {
-    if (firstCard.dataset.card === secondCard.dataset.card) {
-    firstCard.removeEventListener('click', flipCard);
-    secondCard.removeEventListener('click', flipCard);
-    } else {
-        locked = true;
-        setTimeout(() => {
-            firstCard.classList.remove('flip');
-            secondCard.classList.remove('flip');
-            locked = false;
-        }, 1500);
-    }
+  if (firstCard.dataset.card === secondCard.dataset.card) {
+    firstCard.removeEventListener("click", flipCard);
+    secondCard.removeEventListener("click", flipCard);
+    arr.push(1);
+    userWin();
+  } else {
+    locked = true;
+    setTimeout(() => {
+      firstCard.classList.remove("flip");
+      secondCard.classList.remove("flip");
+      locked = false;
+    }, 1500);
+  }
+}
+
+function userWin() {
+  console.log(arr.length);
+  if (arr.length == 6) {
+    win.style.display = "block";
+  }
 }
 
 (function mixed() {
-    imgSection.forEach(img => {
-        let random = Math.floor(Math.random() * 11) + 1;
-        img.style.order = random;
-    })
+  imgSection.forEach((img) => {
+    let random = Math.floor(Math.random() * 11) + 1;
+    img.style.order = random;
+  });
 })();
 
-imgSection.forEach(img => img.addEventListener('click', flipCard));
+playAgain.addEventListener("click", () => {
+  location.reload();
+});
+
+imgSection.forEach((img) => img.addEventListener("click", flipCard));
