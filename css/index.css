@@ -48,6 +48,10 @@ body {
   transition: 0.5s;
 }
 
+.back-face {
+  cursor: pointer;
+}
+
 .front-face,
 .back-face {
   width: 100%;
